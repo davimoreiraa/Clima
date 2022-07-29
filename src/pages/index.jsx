@@ -14,9 +14,16 @@ export default function Home() {
 
   useEffect(() => {
     takeDataAPI()
+    console.log('ativou o useeffect')
   }, [])
 
   function takeDataAPI() {
+    const fetchData = () => {
+      return fetch("https://randomuser.me/api/")
+            .then((response) => response.json())
+            .then((data) => console.log(data));
+    }
+
     fetch(`http://api.weatherapi.com/v1/current.json?key=99ee11124ee04eed822233932222707&q=${city}&aqi=no`, {
       method: 'GET',
       headers: {
@@ -34,7 +41,6 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <link>Precisão do tempo</link>
         <meta
           name="description"
           content="Website que exibe o clima de uma cidade escolhida"
@@ -55,6 +61,7 @@ export default function Home() {
                placeholder="Insira aqui a cidade"
                onChange={(e) => {
                 setCity(e.target.value)
+                takeDataAPI()
               }}
                />
                <button>Buscar</button>
