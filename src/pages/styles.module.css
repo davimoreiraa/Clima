@@ -1,0 +1,14 @@
+.content {
+  width: 100vw;
+  min-height: 100vh;
+  background-image: linear-gradient(red, yellow);
+  padding-top: 2em;
+}
+
+.title_container {
+  color: white;
+}
+
+.input_container {
+  margin-top: 1.7em;
+}
