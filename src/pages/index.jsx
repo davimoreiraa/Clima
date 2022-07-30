@@ -6,37 +6,19 @@ import Image from 'next/image'
 import styles from './styles.module.css'
 
 /* ------------------ RESOURCES -------------------*/
+import axios from "axios"
 import { useState, useEffect } from 'react'
 
 export default function Home() {
   const [city, setCity] = useState('Hong Kong')
-  const [data, setData] = useState({})
+  const [data, setData] = useState({}) 
 
-  useEffect(() => {
-    takeDataAPI()
-    console.log('ativou o useeffect')
-  }, [])
-
-  function takeDataAPI() {
-    const fetchData = () => {
-      return fetch("https://randomuser.me/api/")
-            .then((response) => response.json())
-            .then((data) => console.log(data));
-    }
-
-    fetch(`http://api.weatherapi.com/v1/current.json?key=99ee11124ee04eed822233932222707&q=${city}&aqi=no`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then((data) => data.json())
-    .then((data) => {
-      setData(data)
-    })
-    .catch((err) => console.log(err))
-    console.log(data)
-  }
+  const takeDataAPI = () => {
+    return axios.get(`http://api.weatherapi.com/v1/current.json?key=99ee11124ee04eed822233932222707&q=${city}&aqi=no`)
+          .then((response) => setData(response.data))
+          .catch((err) => console.log(err))
+          console.log(data)
+        }
 
   return (
     <div>
@@ -50,7 +32,7 @@ export default function Home() {
       <main className={`${styles.content} d-flex justify-content-center`}>
         <div className={`${styles.container} col-11 `}>
           <div className={`${styles.title_container} d-flex justify-content-center`}>
-            <h1 onClick={() => console.log(data)} >Previsão do tempo</h1>
+            <h1>Previsão do tempo</h1>
           </div>
           <div className={`d-flex justify-content-center`}>
             <div className={`${styles.input_container} col-10 col-md-7 `}>
@@ -61,16 +43,16 @@ export default function Home() {
                placeholder="Insira aqui a cidade"
                onChange={(e) => {
                 setCity(e.target.value)
-                takeDataAPI()
               }}
+              value={city}
                />
-               <button>Buscar</button>
+               <button onClick={() => takeDataAPI()} >Buscar</button>
             </div>
           </div>
           <article className={`${styles.climate_box}`}>
             <div className={`${styles.climate_infos}`}>
               <h2>{city}</h2>
-              <h2>{data.current.feelslike_c}</h2>
+              {data.current == undefined ? '' : <h2>{data.current.feelslike_c}</h2>}
             </div>
           </article>
         </div>
@@ -78,3 +60,5 @@ export default function Home() {
     </div>
   )
 }
+
+// remover value inicial de city
