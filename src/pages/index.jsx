@@ -10,7 +10,8 @@ import axios from "axios"
 import { useState, useEffect } from 'react'
 
 export default function Home() {
-  const [city, setCity] = useState('Hong Kong')
+  const [city, setCity] = useState('')
+  const [cityToBeExbithed, setCityToBeExbithed] = useState('')
   const [data, setData] = useState({}) 
 
   const takeDataAPI = () => {
@@ -46,12 +47,16 @@ export default function Home() {
               }}
               value={city}
                />
-               <button onClick={() => takeDataAPI()} >Buscar</button>
+               <button 
+               onClick={() => {
+                takeDataAPI()
+                setCityToBeExbithed(city)
+                }} >Buscar</button>
             </div>
           </div>
           <article className={`${styles.climate_box}`}>
             <div className={`${styles.climate_infos}`}>
-              <h2>{city}</h2>
+              <h2>{cityToBeExbithed}</h2>
               {data.current == undefined ? '' : <h2>{data.current.feelslike_c}</h2>}
             </div>
           </article>
@@ -60,5 +65,3 @@ export default function Home() {
     </div>
   )
 }
-
-// remover value inicial de city
