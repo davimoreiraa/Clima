@@ -9,3 +9,52 @@
 .input_container {
   margin-top: 1.7em;
 }
+
+.search_btn {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  font-size: 1.1em;
+}
+
+.climate_box {
+  background-color: #ddd;
+  padding: 20px 25px;
+}
+
+.location {
+  color: rgb(92, 93, 94);
+  font-size: 1.2em;
+}
+
+.line {
+  margin-top: 6px;
+  height: 1px;
+  background-color: rgb(196, 138, 37);
+}
+
+.container {
+  margin-bottom: 0.8em;
+  margin-top: 1.4em;
+}
+
+.temperature, .text {
+  color: rgb(52, 52, 52);
+  font-size: 2em;
+}
+
+.feelslike {
+  color: rgb(52, 52, 52);
+  font-size: 1.7em;
+}
+
+.text, .feelslike {
+  font-weight: 300;
+  margin-left: 25px;
+}
+
+.humidity {
+  font-weight: 200;
+  font-size: 1.7em;
+  color: rgb(52, 52, 52);
+  margin-bottom: 1em;
+}
