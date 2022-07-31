@@ -1,4 +1,4 @@
-<h1>Website de previsão do tempo ☀️</h1>
+<h1>Clima ☀️</h1>
 <h2>Descrição</h2>
 <p style='font-size:16px'>
   Aplicação desenvolvida para compor o repositório. Inspirado num desafio proposto em 2016 para um processo seletivo pela 1STi. Link para o repositório do desafio: https://github.com/1STi/desafio-frontend
