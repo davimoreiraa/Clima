@@ -48,7 +48,9 @@ npm run dev
 ```
 
 <hr/>
-
+<h2>Publicação</h2>
+<p align='center' style='font-size:17px'>Acesse a página hospedada pelo Vercel <a href='https://clima-mocha.vercel.app/'>aqui</a>.</p>
+<hr/>
 <footer>
   <p style='font-size:17px'>🍊 Made by Davi Moreira | See my 
     <a href="https://www.linkedin.com/in/davi-moreira-dos-santos-804280203/">LinkedIn</a>
