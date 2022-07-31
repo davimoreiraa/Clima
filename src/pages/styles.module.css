@@ -4,6 +4,7 @@
   background-image: linear-gradient(red, yellow);
   padding-top: 2em;
   color: white;
+  font-family: 'Poppins', sans-serif;
 }
 
 .input_container {
