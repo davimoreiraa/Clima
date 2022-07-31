@@ -1,13 +1,12 @@
 /* ------------------  COMPONENTS -------------------*/
 import Head from 'next/head'
-import Image from 'next/image'
 
 /* ------------------ STYLES -------------------*/
 import styles from './styles.module.css'
 
 /* ------------------ RESOURCES -------------------*/
 import axios from "axios"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export default function Home() {
   const [city, setCity] = useState('')
@@ -16,10 +15,9 @@ export default function Home() {
 
   const takeDataAPI = () => {
     return axios.get(`http://api.weatherapi.com/v1/current.json?key=99ee11124ee04eed822233932222707&q=${city}&aqi=no`)
-          .then((response) => setData(response.data))
-          .catch((err) => console.log(err))
-          console.log(data)
-        }
+        .then((response) => setData(response.data))
+        .catch((err) => console.log(err))
+  }
 
   return (
     <div>
@@ -51,15 +49,23 @@ export default function Home() {
                onClick={() => {
                 takeDataAPI()
                 setCityToBeExbithed(city)
-                }} >Buscar</button>
+                console.log(data)
+                }}>
+                  Buscar
+                </button>
             </div>
           </div>
           <article className={`${styles.climate_box}`}>
+            <div>
+              {data.current == undefined ? '' : <img src={data.current.condition.icon} /> }
+            </div>
             <div className={`${styles.climate_infos}`}>
               <h2>{cityToBeExbithed}</h2>
               {data.current == undefined ? '' : <h2>{data.current.feelslike_c}</h2>}
             </div>
           </article>
+        </div>
+        <div>
         </div>
       </main>
     </div>
