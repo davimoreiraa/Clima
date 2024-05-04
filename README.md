@@ -8,6 +8,11 @@
   Link para a <a href='https://www.weatherapi.com/'>API</a> usada.
 </p>
 <hr />
+<h2>Publicação</h2>
+<p align='center' style='font-size:17px'>Acesse a página hospedada pelo Vercel <a href='https://clima-mocha.vercel.app/'>aqui</a>.</p>
+</br>
+<p><strong>OBS: </strong>Acontece um erro ao usar da api pelo vercel. Recomenda-se baixar o projeto para utilizar suas features. </p>
+<hr/>
 <h2>Frameworks e bibliotecas:</h2>
 <ul style='font-size:17px'>
   <li>
@@ -49,11 +54,6 @@ npm install
 npm run dev
 ```
 
-<hr/>
-<h2>Publicação</h2>
-<p align='center' style='font-size:17px'>Acesse a página hospedada pelo Vercel <a href='https://clima-mocha.vercel.app/'>aqui</a>.</p>
-</br>
-<p><strong>OBS: </strong>Acontece um erro ao usar da api pelo vercel. Recomenda-se baixar o projeto para utilizar suas features. </p>
 <hr/>
 <footer>
   <p style='font-size:17px'>🍊 Made by Davi Moreira | See my 
