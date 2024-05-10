@@ -14,7 +14,7 @@ export default function Home() {
   const [data, setData] = useState({}) 
 
   const takeDataAPI = () => {
-    return axios.get(`http://api.weatherapi.com/v1/current.json?key=99ee11124ee04eed822233932222707&q=${city}&aqi=no`)
+    return axios.get(`https://api.hgbrasil.com/weather?key=bd314fdd&city_name=Campinas,SP`)
         .then((response) => setData(response.data))
         .catch((err) => console.log(err))
   }
@@ -27,6 +27,7 @@ export default function Home() {
           content="Website que exibe o clima de uma cidade escolhida"
         />
         <link rel="icon" href="/sun.png" />
+        
       </Head>
       <main className={`${styles.content} d-flex justify-content-center`}>
         <div className={`${styles.container} col-11 `}>
@@ -65,7 +66,7 @@ export default function Home() {
                 <div className={`${styles.climate_infos}`}>
                   { data.current == undefined ? '' : 
                     <h2 className={`${styles.location}`}>
-                      {data.location.name}, {data.location.region} - {data.location.country} 
+                      {data.city_name}
                     </h2> 
                   }
                   <div className={`d-flex justify-content-center`}>
@@ -74,27 +75,22 @@ export default function Home() {
                   <div className={`${styles.container} d-flex`}>
                   { data.current == undefined ? '' :
                    <h3 className={`${styles.temperature}`}>
-                      {data.current.temp_c}°C
-                    </h3>
-                  }
-                  { data.current == undefined ? '' :
-                   <h3 className={`${styles.feelslike}`}>
-                    Sensação: <strong>{data.current.feelslike_c}°C</strong>
+                      {data.temp}°C
                     </h3>
                   }
                   </div>
                   { data.current == undefined ? '' :
-                    <p className={`${styles.humidity}`}>Umidade: <strong>{data.current.humidity}%</strong></p>
+                    <p className={`${styles.humidity}`}>Umidade: <strong>{data.humidity}%</strong></p>
                   }
                 </div>
-                <div className={`d-flex justify-content-center`}>
-                  {data.current == undefined ? '' : <img src={data.current.condition.icon} /> }
+                {/* <div className={`d-flex justify-content-center`}>
+                  {data.current == undefined ? '' : <img src={data.current.condition.icon} alt ='condition'/> }
                   { data.current == undefined ? '' :
                    <h3 className={`${styles.text}`}>
                       {data.current.condition.text}
                     </h3>
                   }
-                </div>
+                </div> */}
               </div>
             </article>
           </div>
