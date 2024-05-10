@@ -14,7 +14,11 @@ export default function Home() {
   const [data, setData] = useState({}) 
 
   const takeDataAPI = () => {
-    return axios.get(`https://api.hgbrasil.com/weather?key=bd314fdd&city_name=Campinas,SP`)
+    return axios.get(`https://api.hgbrasil.com/weather?key=bd314fdd&city_name=Campinas,SP`, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      }
+    })
         .then((response) => setData(response.data))
         .catch((err) => console.log(err))
   }
