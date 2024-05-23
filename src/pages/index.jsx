@@ -14,9 +14,9 @@ export default function Home() {
   const [data, setData] = useState({}) 
 
   const takeDataAPI = () => {
-    return axios.get(`https://api.hgbrasil.com/weather?key=bd314fdd&city_name=Campinas,SP`, {
+    return axios.get('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=9ea3ecdb37e62c29b1808d406c1a8fa1', {
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        "Access-Control-Allow-Origin": "*",
       }
     })
         .then((response) => setData(response.data))
