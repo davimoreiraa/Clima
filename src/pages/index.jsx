@@ -14,11 +14,7 @@ export default function Home() {
   const [data, setData] = useState({}) 
 
   const takeDataAPI = () => {
-    return axios.get('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=9ea3ecdb37e62c29b1808d406c1a8fa1', {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      }
-    })
+    return axios.get('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=9ea3ecdb37e62c29b1808d406c1a8fa1')
         .then((response) => setData(response.data))
         .catch((err) => console.log(err))
   }
