@@ -6,25 +6,15 @@ import styles from './styles.module.css'
 
 /* ------------------ RESOURCES -------------------*/
 import axios from "axios"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export default function Home() {
   const [city, setCity] = useState('')
   const [cityToBeExbithed, setCityToBeExbithed] = useState('')
   const [data, setData] = useState({}) 
-  const [temp, setTemp] = useState(0) 
-
-  useEffect(() => {
-    try {
-      setTemp((data.main.temp - 273.15).toFixed(2))
-    }
-    catch(e) {
-      console.log(e)
-    }
-  }, [data])
 
   const takeDataAPI = () => {
-    return axios.get('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=9ea3ecdb37e62c29b1808d406c1a8fa1')
+    return axios.get('https://api.openweathermap.org/data/2.5/weather?q=Alemanha&APPID=9ea3ecdb37e62c29b1808d406c1a8fa1')
     .then((response) => setData(response.data))
     .catch((err) => console.log(err))
   }
@@ -49,7 +39,7 @@ export default function Home() {
                type="text" 
                className={`form-control`} 
                id="city" 
-               placeholder="Insira aqui a cidade"
+               placeholder="Insira aqui a cidade ou País"
                onChange={(e) => {
                 setCity(e.target.value)
                 }}
@@ -62,8 +52,6 @@ export default function Home() {
                   onClick={() => {
                     takeDataAPI()
                     setCityToBeExbithed(city)
-                    console.log(data)
-                    console.log(data.name)
                   }}>
                     Buscar
                  </button>
@@ -75,22 +63,29 @@ export default function Home() {
               <div>
                 <div className={`${styles.climate_infos}`}>
                   { data.main == undefined ? '' : 
+                  <div className={`d-flex justify-content-center`}>
                     <h2 className={`${styles.location}`}>
                       {data.name}
                     </h2> 
+                  </div>
                   }
                   <div className={`d-flex justify-content-center`}>
-                  <div className={`${styles.line} col-10`}></div>
+                    <div className={`${styles.line} col-10`}></div>
                   </div>
                   <div className={`${styles.container} d-flex`}>
                   { data.main == undefined ? '' :
-                   <h3 className={`${styles.temperature}`}>
-                      {temp}°C
+                   <h3 className={`${styles.temperature} mb-0`}>
+                      {(data.main.temp - 273.15).toFixed(2)}°C
+                    </h3>
+                  }
+                  { data.main == undefined ? '' :
+                   <h3 className={`${styles.feelslike} mb-0`}>
+                    Sensação: <strong>{(data.main.feels_like - 273.15).toFixed(2)}°C</strong>
                     </h3>
                   }
                   </div>
                   { data.main == undefined ? '' :
-                    <p className={`${styles.humidity}`}>Umidade: <strong>{data.humidity}%</strong></p>
+                    <p className={`${styles.humidity}`}>Umidade: <strong>{data.main.humidity}%</strong></p>
                   }
                 </div>
                 {/* <div className={`d-flex justify-content-center`}>
