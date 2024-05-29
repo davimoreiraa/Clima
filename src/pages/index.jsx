@@ -1,6 +1,9 @@
 /* ------------------  COMPONENTS -------------------*/
 import Head from 'next/head'
 
+/* ------------------ ICONS -------------------*/
+import { LuWind } from "react-icons/lu";
+
 /* ------------------ STYLES -------------------*/
 import styles from './styles.module.css'
 
@@ -38,7 +41,7 @@ export default function Home() {
                type="text" 
                className={`form-control`} 
                id="city" 
-               placeholder="Insira aqui a cidade ou País"
+               placeholder="Insira aqui o País ou estado"
                onKeyUp={(e) => {
                 setCity(e.target.value);
                 }}
@@ -85,14 +88,14 @@ export default function Home() {
                     <p className={`${styles.humidity}`}>Umidade: <strong>{data.main.humidity}%</strong></p>
                   }
                 </div>
-                {/* <div className={`d-flex justify-content-center`}>
-                  {data.main == undefined ? '' : <img src={data.main.condition.icon} alt ='condition'/> }
+                <div className={`d-flex justify-content-start align-items-center`}>
+                  {data.main == undefined ? '' : '' }
                   { data.main == undefined ? '' :
-                   <h3 className={`${styles.text}`}>
-                      {data.main.condition.text}
-                    </h3>
+                   <h4 className={`${styles.text} mb-0 ms-0 pb-0 fs-3`}>
+                     <LuWind className='text-black fs-2'/> Vento:  <strong>{data.wind.speed} m/s</strong> 
+                    </h4>
                   }
-                </div> */}
+                </div> 
               </div>
             </article>
           </div>
