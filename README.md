@@ -3,9 +3,7 @@
 <p style='font-size:16px'>
   Aplicação desenvolvida para compor o repositório. Inspirado num desafio proposto em 2016 para um processo seletivo pela 1STi. Link para o repositório do desafio: https://github.com/1STi/desafio-frontend
   <br/>
-  OBS: a key da API usada era gratuita, e já venceu :(
-  <br/>
-  Link para a <a href='https://www.weatherapi.com/'>API</a> usada.
+  Link para a <a href='https://openweathermap.org/'>API</a> usada.
 </p>
 <hr />
 <h2>Publicação</h2>
