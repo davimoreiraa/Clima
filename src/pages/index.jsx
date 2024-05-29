@@ -10,11 +10,10 @@ import { useState } from 'react'
 
 export default function Home() {
   const [city, setCity] = useState('')
-  const [cityToBeExbithed, setCityToBeExbithed] = useState('')
   const [data, setData] = useState({}) 
 
   const takeDataAPI = () => {
-    return axios.get('https://api.openweathermap.org/data/2.5/weather?q=Alemanha&APPID=9ea3ecdb37e62c29b1808d406c1a8fa1')
+    return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=9ea3ecdb37e62c29b1808d406c1a8fa1`)
     .then((response) => setData(response.data))
     .catch((err) => console.log(err))
   }
@@ -40,10 +39,9 @@ export default function Home() {
                className={`form-control`} 
                id="city" 
                placeholder="Insira aqui a cidade ou País"
-               onChange={(e) => {
-                setCity(e.target.value)
+               onKeyUp={(e) => {
+                setCity(e.target.value);
                 }}
-                value={city}
                />
                <div className={`d-flex justify-content-center`}>
                 <button 
@@ -51,7 +49,6 @@ export default function Home() {
                   type='button' 
                   onClick={() => {
                     takeDataAPI()
-                    setCityToBeExbithed(city)
                   }}>
                     Buscar
                  </button>
